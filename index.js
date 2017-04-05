@@ -119,3 +119,46 @@ graph.render(function(coord) {
 });
 
 
+// The Mandelbrot set is the set of all complex numbers that remain bounded when iterated
+// on the equation fc(z) = z2 + c
+
+function isMandlebrot(coord) {
+    var cr = coord.x;
+    var ci = coord.y;
+    var zr = cr;
+    var zi = ci;
+
+    for (var i = 0; i < 100; i++) {
+        if (zr**2 + zi**2 > 4) {
+            return false;
+        }
+
+        newzr = (zr * zr) - (zi * zi) + cr;
+        newzi = ((zr * zi) *2) + ci;
+        zr = newzr;
+        zi = newzi;
+    }
+    return true;
+}
+
+var graph = new Graph("canvas");
+graph.render(isMandlebrot);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
